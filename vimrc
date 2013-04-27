@@ -7,7 +7,6 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 
-" g:UltiSnipsSnippetsDir=['ultiSnips']
 " --------------------------
 " MISC
 " --------------------------
@@ -57,7 +56,13 @@ set statusline+=%-14.(%l,%c%V%)\ %<%P        " offset
 " ----------------------------------------------------
 
 " --------------------------
-"  VIM-LATEX 
+"  UltiSnips 
+" --------------------------
+
+let g:UltiSnipsEditSplit = 'vertical'
+
+" --------------------------
+"  vim-latex 
 " --------------------------
 
 let g:tex_flavor='latex'
