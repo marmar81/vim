@@ -18,15 +18,23 @@ set tabstop=2 " a tabstop is 2 spaces
 set softtabstop=4 
 set sw=2
 set number " always show line numbers
-filetype plugin on
-filetype indent on
 set ssop-=options	" do not store global and local values in a session 
 set ssop-=folds		" do not store folds in a session
+filetype plugin on
+filetype indent on
 
-colorscheme koehler
+
+set t_Co=256 "required for mustang to work with vim
+colorscheme mustang
 
 syntax on
 filetype on
+
+" --------------------------
+" C file options
+" --------------------------
+
+autocmd FileType c setlocal softtabstop=3 shiftwidth=3 expandtab formatprg=astyle\ -A1s3CSNYpjc
 
 " --------------------------
 " STATUS LINE
@@ -62,6 +70,13 @@ set statusline+=%-14.(%l,%c%V%)\ %<%P        " offset
 let g:UltiSnipsEditSplit = 'vertical'
 
 " --------------------------
+"  clang_complete 
+" --------------------------
+
+let g:clang_snippets = 1
+let g:clang_snippets_engine = 'ultisnips'
+
+" --------------------------
 "  vim-latex 
 " --------------------------
 
@@ -72,19 +87,10 @@ let g:Tex_CompileRule_pdf = '/home/marcus/opt/texlive/2012/bin/x86_64-linux/pdfl
 let g:Tex_ViewRule_pdf = 'evince'
 let g:tex_comment_nospell= 1
 
-" tex environments
-let g:Tex_Env_mathinline = '\(<++>\)<++>'
-let g:Tex_PromptedEnvironments = 'mathinline,$$'
-let g:Tex_HotKeyMappings = 'mathinline,$$' 
-
-" tex commands
-let g:Tex_Com_fopclcond = '\\fopclcond{<++>}[<++>]{<++>}{<++>}<++>'
-let g:Tex_PromptedCommands = 'fopclcond'
-vnoremap m <C-\><C-N>:call VEnclose('\(','\)', '\(','\)')<CR>  
-
 " --------------------------
 "  BREAKINDENT SETTINGS
 " --------------------------
+
 set breakindent 
 set showbreak=>..
 
